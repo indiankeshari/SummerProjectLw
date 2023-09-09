@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Docker Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #6d71e7;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #6d71e7;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #5c60cf;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form {
+            margin: 10px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Docker Status</h1>
+        <p id="p1"><b>Docker Status coming...</b></p>
+        <button onclick="lw()"><b>Refresh</b></button>
+        <hr>
+        <h2><b>Want to launch a new Docker container</b></h2>
+        <form>
+            <label for="in2"><b>Enter the image name:</b></label><br>
+            <input id="in2" name="d" placeholder="Image name">
+        </form>
+        <button onclick="lw1()">Launch</button>
+        <p id="p2">...</p>
+    </div>
+    <form action="http://13.234.17.85/cgi-bin/docker.py">
+        <input type="submit" value="Back to Main Menu">
+    </form>
+
+    <script>
+function lw(){
+            
+            var xhr = new XMLHttpRequest();
+
+            xhr.open("GET" , "/cgi-bin/docker.py",true);
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                    //4: if response c
+                    if(xhr.readyState ==4 ){
+                            document.getElementById("p1").innerHTML=this.responseText;}
+             }
+}
+function lw1(){
+
+            var xhr = new XMLHttpRequest();
+            var mycmd=document.getElementById("in2").value;
+            xhr.open("GET" , "/cgi-bin/docker.py?d="+mycmd,true);
+            xhr.send();
+            xhr.onreadystatechange = function() {
+                    //4: if response c
+                    if(xhr.readyState ==4 ){
+                            document.getElementById("p2").innerHTML=this.responseText;}
+             }
+}
+
+</script>      
+</body>
+</html>

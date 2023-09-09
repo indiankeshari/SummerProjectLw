@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create S3 Bucket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease-in-out;
+            width: 100%;
+        }
+        input[type="text"]:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Create S3 Bucket</h1>
+        <form action="http://13.234.17.85/cgi-bin/createS3.py" method="post">
+            <label for="bucket_name">S3 Bucket Name:</label>
+            <input type="text" id="bucket_name" name="bucket_name" required><br><br>
+            <input type="submit" value="Create S3 Bucket">
+        </form>
+        <br>
+        <div id="bucket_info">
+            <!-- Bucket creation information will be displayed here -->
+        </div>
+    </div>
+</body>
+</html>

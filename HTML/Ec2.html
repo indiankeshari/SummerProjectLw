@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Launch EC2 Instances</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0052a3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Launch EC2 Instances</h1>
+        <form action="http://13.234.17.85/cgi-bin/ec2.py" method="post">
+            <label for="image_id">Image ID:</label>
+            <input type="text" name="image_id" id="image_id" required>
+
+            <label for="instance_type">Instance Type:</label>
+            <input type="text" name="instance_type" id="instance_type" required>
+
+            <label for="max_count">Max Count:</label>
+            <input type="number" name="max_count" id="max_count" value="1" required>
+
+            <label for="min_count">Min Count:</label>
+            <input type="number" name="min_count" id="min_count" value="1" required>
+
+            <input type="submit" value="Launch">
+        </form>
+    </div>
+</body>
+</html>
